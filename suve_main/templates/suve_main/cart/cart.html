@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+</head>
+<body>
+{% for route in routes %}
+<p><a href="{% url route.url_name %}">{{ route.title }}</a></p>
+{% endfor %}
+</body>
+</html>
