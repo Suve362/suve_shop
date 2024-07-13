@@ -4,16 +4,16 @@ from django.http import HttpResponse, HttpResponseNotFound
 # Create your views here.
 
 routes = [
-    {'title': 'Log in', 'url_name': 'login'},
-    {'title': 'Cart', 'url_name': 'cart'},
-    {'title': 'Main', 'url_name': 'main'},
-
+    {'url_name': 'main', 'name': 'Main'},
+    {'url_name': 'products', 'name': 'Products'},
+    {'url_name': 'contacts', 'name': 'Contacts'},
+    {'url_name': 'cart', 'name': 'Cart'},
 ]
 
 
 def main_page(request):
     data = {'routes': routes}
-    return render(request, 'suve_main/main/main.html', context=data)
+    return render(request, 'index.html', context=data)
 
 
 def pages(request, page_id):
@@ -22,14 +22,28 @@ def pages(request, page_id):
     return HttpResponse(f'this is {page_id}')
 
 
+def main(request):
+    return redirect('main')
+
+
 def login(request):
     data = {'routes': routes}
     return render(request, 'suve_main/login/login.html', context=data)
 
 
-def cart(request):
+def cart_page(request):
     data = {'routes': routes}
     return render(request, 'suve_main/cart/cart.html', context=data)
+
+
+def products_page(request):
+    data = {'routes': routes}
+    return render(request, 'suve_main/products/products.html', context=data)
+
+
+def contacts_page(request):
+    data = {'routes': routes}
+    return render(request, 'suve_main/contacts/contacts.html', context=data)
 
 
 def page_not_found(request, exception):

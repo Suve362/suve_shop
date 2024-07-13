@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Log in - suve</title>
-</head>
-<body>
-  {% for route in routes %}
-    <p><a href="{% url route.url_name %}">{{ route.title }}</a></p>
-  {% endfor %}
-</body>
-</html>
+{% extends 'index.html' %}
+{% block content %}
+<h1>Log</h1>
+{% endblock %}

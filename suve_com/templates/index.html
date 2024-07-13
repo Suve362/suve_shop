@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main | Suve</title>
+    <link type="text/css" href="{% static 'suve_main/css/styles.css' %}" rel="stylesheet"/>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Suve: innovative technologies here</h1>
+            <nav>
+                <ul>
+                    {% for route in routes %}
+                    <li><a href="{% url route.url_name %}">{{ route.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+    {% block content %} {% endblock %}
+    <main>
+        <div class="container">
+            <section class="hero">
+                <h2>Welcome to suve shop, the most innovative shop in the world</h2>
+                <p>Every tech you have ever imagined u find here</p>
+            </section>
+
+            <section class="products">
+                <h2>Our products</h2>
+                <div class="product">
+<!--                    <img src="iphone.jpg" alt="iPhone">-->
+                    <h3>Product 1</h3>
+                    <p>Price: $1</p>
+                    <button>Buy</button>
+                </div>
+                <div class="product">
+<!--                    <img src="macbook.jpg" alt="MacBook">-->
+                    <h3>Product 2</h3>
+                    <p>Price: $2</p>
+                    <button>Buy</button>
+                </div>
+                <!-- Добавьте больше продуктов по мере необходимости -->
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Suve, Inc.</p>
+        </div>
+    </footer>
+</body>
+</html>
+
