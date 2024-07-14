@@ -13,7 +13,7 @@ routes = [
 
 def main_page(request):
     data = {'routes': routes}
-    return render(request, 'index.html', context=data)
+    return render(request, 'suve_main/main/main.html', context=data)
 
 
 def pages(request, page_id):

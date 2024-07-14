@@ -1,4 +1,16 @@
 {% extends 'index.html' %}
+{% load static %}
 {% block content %}
-<h1>Contacts</h1>
-{% endblock %}
+<div class="content">
+    <section class="contact-info">
+        <h2>Contact information</h2>
+        <p><strong>Address:</strong> Los Angeles, USA</p>
+        <p><strong>Phone number:</strong> +375 (29) 203-03-62</p>
+        <p><strong>Email:</strong> nekrashevich975@gmail.com</p>
+        <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d423285.8929815375!2d-118.69193008715304!3d34.02073049481362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c7d70f1a4891%3A0x90a1f4a4c4b21e41!2sLos%20Angeles%2C%20CA%2C%20USA!5e0!3m2!1sen!2sru!4v1621387592746!5m2!1sen!2sru"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+</div>
+        {% endblock %}

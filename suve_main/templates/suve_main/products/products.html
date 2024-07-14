@@ -1,4 +1,22 @@
 {% extends 'index.html' %}
+{% load static %}
 {% block content %}
-<h1>Products</h1>
+ <div class="product">
+    <img src="{% static 'suve_main/images/favicon.ico' %}" alt="Apple">
+    <h3>Apple</h3>
+    <p>Price: $3,5 T</p>
+    <button>Buy</button>
+ </div>
+<div class="product">
+    <img src="{% static 'suve_main/images/favicon-196x196.png' %}" alt="Tesla">
+    <h3>Tesla</h3>
+    <p>Price: $800,000 B</p>
+    <button>Buy</button>
+</div>
+<div class="product">
+    <img src="{% static 'suve_main/images/Favicon.png' %}" alt="Samsung">
+    <h3>Samsung</h3>
+    <p>Price: $400,000 B</p>
+    <button>Buy</button>
+</div>
 {% endblock %}

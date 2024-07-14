@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<main>
+        <div class="container">
+            <section class="hero">
+                <h2>Welcome to suve shop, the most innovative shop in the world</h2>
+                <p>Every tech you have ever imagined u find here</p>
+            </section>
+
+            <section class="products">
+                <h2>Our products</h2>
+                <div class="product">
+                    <img src="{% static 'suve_main/images/favicon.ico' %}" alt="Apple">
+                    <h3>Apple</h3>
+                    <p>Price: $3,5 T</p>
+                    <button>Buy</button>
+                </div>
+                <div class="product">
+                    <img src="{% static 'suve_main/images/favicon-196x196.png' %}" alt="Tesla">
+                    <h3>Tesla</h3>
+                    <p>Price: $800,000 B</p>
+                    <button>Buy</button>
+                </div>
+            </section>
+        </div>
+    </main>
+{% endblock %}
