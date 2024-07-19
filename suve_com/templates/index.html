@@ -13,8 +13,8 @@
             <h1>Suve: innovative technologies here</h1>
             <nav>
                 <ul>
-                    {% for route in routes %}
-                    <li><a href="{% url route.url_name %}">{{ route.name }}</a></li>
+                    {% for url in routes %}
+                    <li><a href="{% url url.url_name %}">{{ url.name }}</a></li>
                     {% endfor %}
                 </ul>
             </nav>

@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     'suve_main.apps.SuveMainConfig',
 ]
 
@@ -78,12 +79,12 @@ WSGI_APPLICATION = 'suve_com.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'suve.db',
-        # 'USER': 'suve',
-        # 'PASSWORD': 'Dex52777',
-        # 'HOST': 'localhost',
-        # 'PORT': '5432'
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'suve',
+        'USER': 'suve',
+        'PASSWORD': 'Dex52777',
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
 }
 
