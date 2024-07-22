@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseNotFound
 
-from .models import Product, Routes
+from .models import *
 
 
 def main_page(request):
@@ -43,18 +43,84 @@ def products_page(request):
     urls = Routes.objects.all()
     data = {
         'routes': urls,
-        'brand_page': product
+        'brand_page': product,
     }
     return render(request, 'suve_main/products/products.html', context=data)
 
 
-def products(request, brands):
-    product = Product.objects.filter(brand=brands)
+def products_apple(request):
+    products = Product.objects.filter(brand="apple")
+    product_data = []
+
+    for product in products:
+        storage_specs = StorageSpecs.objects.filter(product=product)
+        for storage_spec in storage_specs:
+            price = get_object_or_404(ProductPrice, product=product, storage_spec=storage_spec)
+            product_data.append({
+                'product_id': product.id,
+                'storage_spec_id': storage_spec.id,
+                'name': product.name,
+                'brand': product.brand,
+                'category': product.category,
+                'rom': storage_spec.rom,
+                'diagonal': storage_spec.diagonal,
+                'price': price.price
+            })
+
     data = {
-        'brand': brands,
-        'products': product
+        'product_data': product_data
     }
-    return render(request, f'suve_main/products/product_{brands.lower()}/product_{brands.lower()}.html', context=data)
+    return render(request, f'suve_main/products/product_apple/product_apple.html', context=data)
+
+
+def products_samsung(request):
+    products = Product.objects.filter(brand="samsung")
+    product_data = []
+
+    for product in products:
+        storage_specs = StorageSpecs.objects.filter(product=product)
+        for storage_spec in storage_specs:
+            price = get_object_or_404(ProductPrice, product=product, storage_spec=storage_spec)
+            product_data.append({
+                'product_id': product.id,
+                'storage_spec_id': storage_spec.id,
+                'name': product.name,
+                'brand': product.brand,
+                'category': product.category,
+                'rom': storage_spec.rom,
+                'diagonal': storage_spec.diagonal,
+                'price': price.price
+            })
+
+    data = {
+        'product_data': product_data
+    }
+    return render(request, f'suve_main/products/product_samsung/product_samsung.html', context=data)
+
+
+def products_tesla(request):
+    products = Product.objects.filter(brand="tesla")
+    product_data = []
+
+    for product in products:
+        storage_specs = StorageSpecs.objects.filter(product=product)
+        for storage_spec in storage_specs:
+            price = get_object_or_404(ProductPrice, product=product, storage_spec=storage_spec)
+            product_data.append({
+                'product_id': product.id,
+                'storage_spec_id': storage_spec.id,
+                'name': product.name,
+                'brand': product.brand,
+                'category': product.category,
+                'rom': storage_spec.rom,
+                'diagonal': storage_spec.diagonal,
+                'price': price.price
+            })
+
+    data = {
+        'product_data': product_data
+    }
+    return render(request, f'suve_main/products/product_tesla/product_tesla.html', context=data)
 
 
 def contacts_page(request):

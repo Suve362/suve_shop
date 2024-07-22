@@ -1,4 +1,19 @@
 {% extends 'index.html' %}
+{% load static %}
 {% block content %}
-<h2>Samsung Products</h2>
+<head>
+    <link type="text/css" href="{% static 'suve_main_samsung/css/style_samsung.css' %}" rel="stylesheet"/>
+</head>
+{% for product in product_data %}
+<div class="content">
+
+    <div id="samsung" class="product">
+        <img src="{% static 'suve_main_samsung/images/SCOMB6Q6-714-PromoGalleryImage-Q6-01-ExclusiveColors.webp' %}" alt="Samsung">
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.rom }} GB</p>
+        <p>Price ${{ product.price }}</p>
+    </div>
+
+</div>
+{% endfor %}
 {% endblock %}
