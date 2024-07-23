@@ -2,17 +2,16 @@
 {% load static %}
 {% block content %}
 <head>
-    <link type="text/css" href="{% static 'suve_main_samsung/css/style_samsung.css' %}" rel="stylesheet"/>
+    <link type="text/css" href="{% static 'suve_main_apple/css/style_apple.css' %}" rel="stylesheet"/>
 </head>
 {% for product in product_data %}
 <div class="content">
 
-    <div id="samsung" class="product">
-        <img src="{% static 'suve_main_samsung/images/SCOMB6Q6-714-PromoGalleryImage-Q6-01-ExclusiveColors.webp' %}" alt="Samsung">
+    <div id="iphone" class="product">
+        <img src="{% static 'suve_main_apple/images/iphone-15-pro-finish-select-202309-6-7inch_GEO_US.webp' %}" alt="iPhone">
         <h3>{{ product.name }}</h3>
         <p>{{ product.diagonal }}"</p>
         <p>{{ product.rom }} GB</p>
-        <p>{{ product.ram }} GB</p>
         <p>Price ${{ product.price }}</p>
     </div>
 

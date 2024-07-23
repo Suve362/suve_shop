@@ -39,7 +39,7 @@ class WatchSpecs(models.Model):
 
 class CarSpecs(models.Model):
     type = models.CharField(max_length=255)
-    extra_options = models.BooleanField()
+    extra_options = models.BooleanField(blank=True, null=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     def __str__(self):

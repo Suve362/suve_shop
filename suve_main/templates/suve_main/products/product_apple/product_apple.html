@@ -10,7 +10,10 @@
     <div id="iphone" class="product">
         <img src="{% static 'suve_main_apple/images/iphone-15-pro-finish-select-202309-6-7inch_GEO_US.webp' %}" alt="iPhone">
         <h3>{{ product.name }}</h3>
+        <p>{{ product.diagonal }}"</p>
         <p>{{ product.rom }} GB</p>
+        <p>{{ product.ram }} GB</p>
+        <p>{{ product.cpu }}</p>
         <p>Price ${{ product.price }}</p>
     </div>
 
