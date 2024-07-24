@@ -1,0 +1,21 @@
+<head>
+    <title>Samsung|Suve</title>
+</head>
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link type="text/css" href="{% static 'suve_main_apple/css/style_apple.css' %}" rel="stylesheet"/>
+</head>
+{% for product in product_data %}
+<div class="content">
+
+    <div id="galaxybuds" class="product">
+        <img src="{% static 'suve_main_samsung/images/SCOMB6Q6-472-Galaxy-Buds3-Pro_Product-KV_2P_RGB-800x600.webp' %}" alt="Galaxybuds">
+        <h3>{{ product.name }}</h3>
+        <p>Price ${{ product.price }}</p>
+    </div>
+
+</div>
+{% endfor %}
+{% endblock %}

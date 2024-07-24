@@ -4,7 +4,7 @@ from django.urls import reverse
 
 class Routes(models.Model):
     url_name = models.CharField(max_length=255)
-    name = models.CharField(max_length=255, unique=True)
+    name = models.CharField(max_length=255)
 
 
 class Product(models.Model):
@@ -26,7 +26,8 @@ class StorageSpecs(models.Model):
     rom = models.IntegerField()
     ram = models.IntegerField(blank=True, null=True)
     cpu = models.CharField(max_length=255, blank=True, null=True)
-    diagonal = models.DecimalField(max_digits=10, decimal_places=1)
+    gpu = models.CharField(max_length=255, blank=True, null=True)
+    diagonal = models.DecimalField(max_digits=10, decimal_places=1, blank=True, null=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
 
@@ -52,6 +53,9 @@ class ProductPrice(models.Model):
     watch_spec = models.ForeignKey(WatchSpecs, on_delete=models.CASCADE, blank=True, null=True)
     car_spec = models.ForeignKey(CarSpecs, on_delete=models.CASCADE, blank=True, null=True)
     price = models.IntegerField()
+
+    def __str__(self):
+        return str(self.price)
 
 
 

@@ -1,0 +1,21 @@
+<head>
+    <title>Apple|Suve</title>
+</head>
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link type="text/css" href="{% static 'suve_main_apple/css/style_apple.css' %}" rel="stylesheet"/>
+</head>
+{% for product in product_data %}
+<div class="content">
+
+    <div id="airpods" class="product">
+        <img src="{% static 'suve_main_apple/images/MTJV3.jpeg' %}" alt="Airpods">
+        <h3>{{ product.name }}</h3>
+        <p>Price ${{ product.price }}</p>
+    </div>
+
+</div>
+{% endfor %}
+{% endblock %}

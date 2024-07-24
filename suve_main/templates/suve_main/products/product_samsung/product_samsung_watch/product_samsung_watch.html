@@ -1,0 +1,24 @@
+<head>
+    <title>Samsung|Suve</title>
+</head>
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link type="text/css" href="{% static 'suve_main_apple/css/style_apple.css' %}" rel="stylesheet"/>
+</head>
+{% for product in product_data %}
+<div class="content">
+
+    <div id="samsung_watch" class="product">
+        <img src="{% static 'suve_main_samsung/images/Galaxy-Watch-Ultra_Main-Product-KV_2P-Gallery-800x600.webp' %}" alt="Samsung_watch">
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.size }}"</p>
+        <p>{{ product.connectivity }}</p>
+        <p>{{ product.material }}</p>
+        <p>Price ${{ product.price }}</p>
+    </div>
+
+</div>
+{% endfor %}
+{% endblock %}

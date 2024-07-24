@@ -1,3 +1,6 @@
+<head>
+    <title>Samsung|Suve</title>
+</head>
 {% extends 'index.html' %}
 {% load static %}
 {% block content %}
@@ -7,8 +10,8 @@
 {% for product in product_data %}
 <div class="content">
 
-    <div id="samsung_smartphone" class="product">
-        <img src="{% static 'suve_main_samsung/images/SCOMB6Q6-714-PromoGalleryImage-Q6-01-ExclusiveColors.webp' %}" alt="Samsung_smartphone">
+    <div id="smartphone" class="product">
+        <img src="{% static 'suve_main_samsung/images/SCOMB6Q6-714-PromoGalleryImage-Q6-01-ExclusiveColors.webp' %}" alt="Smartphone">
         <h3>{{ product.name }}</h3>
         <p>{{ product.diagonal }}"</p>
         <p>{{ product.rom }} GB</p>

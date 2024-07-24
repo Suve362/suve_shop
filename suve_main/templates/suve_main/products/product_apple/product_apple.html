@@ -1,3 +1,6 @@
+<head>
+    <title>Apple|Suve</title>
+</head>
 {% extends 'index.html' %}
 {% load static %}
 {% block content %}
@@ -7,8 +10,8 @@
 {% for product in product_data %}
 <div class="content">
 
-    <div id="iphone" class="product">
-        <img src="{% static 'suve_main_apple/images/iphone-15-pro-finish-select-202309-6-7inch_GEO_US.webp' %}" alt="iPhone">
+    <div id="applewatch" class="product">
+        <img src="{% static 'suve_main_apple/images/iphone-15-pro-finish-select-202309-6-7inch_GEO_US.webp' %}" alt="Applewatch">
         <h3>{{ product.name }}</h3>
         <p>{{ product.diagonal }}"</p>
         <p>{{ product.rom }} GB</p>

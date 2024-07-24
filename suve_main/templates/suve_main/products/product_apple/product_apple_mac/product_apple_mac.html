@@ -1,0 +1,25 @@
+<head>
+    <title>Apple|Suve</title>
+</head>
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link type="text/css" href="{% static 'suve_main_apple/css/style_apple.css' %}" rel="stylesheet"/>
+</head>
+{% for product in product_data %}
+<div class="content">
+
+    <div id="mac" class="product">
+        <img src="{% static 'suve_main_apple/images/mac-studio-hero-202306.jpeg' %}" alt="Mac">
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.diagonal }}"</p>
+        <p>{{ product.rom }} GB</p>
+        <p>{{ product.ram }} GB</p>
+        <p>{{ product.cpu }}</p>
+        <p>Price ${{ product.price }}</p>
+    </div>
+
+</div>
+{% endfor %}
+{% endblock %}
