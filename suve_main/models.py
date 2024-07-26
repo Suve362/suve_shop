@@ -6,11 +6,14 @@ class Routes(models.Model):
     url_name = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.name
+
 
 class Product(models.Model):
-    name = models.CharField(max_length=255)
-    brand = models.CharField(max_length=255)
-    category = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, verbose_name='Product_name')
+    brand = models.CharField(max_length=255, verbose_name='Brand')
+    category = models.CharField(max_length=255, verbose_name='Category')
 
     def __str__(self):
         return self.name
@@ -19,7 +22,12 @@ class Product(models.Model):
         ordering = ['-brand']
 
     def get_absolute_url(self):
-        return reverse('products', kwargs={'slug': self.brand})
+        return reverse('products_page', kwargs={'slug': self.brand})
+
+
+class ProductPhoto(models.Model):
+    photo = models.ImageField(upload_to='photos/', default=None, blank=True, null=True, verbose_name='Photo')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True)
 
 
 class StorageSpecs(models.Model):

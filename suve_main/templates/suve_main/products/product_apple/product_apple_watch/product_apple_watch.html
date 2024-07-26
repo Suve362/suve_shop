@@ -7,18 +7,19 @@
 <head>
     <link type="text/css" href="{% static 'suve_main_apple/css/style_apple.css' %}" rel="stylesheet"/>
 </head>
+<div class="card-container">
 {% for product in product_data %}
-<div class="content">
-
-    <div id="apple_watch" class="product">
-        <img src="{% static 'suve_main_apple/images/ultra-band-unselect-gallery-1-202309.jpeg' %}" alt="Apple_watch">
-        <h3>{{ product.name }}</h3>
-        <p>{{ product.size }}"</p>
-        <p>{{ product.connectivity }}</p>
-        <p>{{ product.material }}</p>
-        <p>Price ${{ product.price }}</p>
-    </div>
-
+<div class="card" style="width: 18rem;">
+  <img src="{{ product.photo }}" class="card-img-top" alt="Apple_watch">
+  <div class="card-body">
+    <h5 class="card-title">{{ product.name }}</h5>
+    <p>{{ product.size }}"</p>
+    <p>{{ product.connectivity }}</p>
+    <p>{{ product.material }}</p>
+    <p>Price ${{ product.price }}</p>
+    <a href="{% url 'products_apple' %}" class="btn btn-primary">Buy</a>
+  </div>
 </div>
 {% endfor %}
+</div>
 {% endblock %}

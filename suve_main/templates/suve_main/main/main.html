@@ -1,34 +1,37 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block content %}
-<main>
-        <div class="container">
-            <section class="hero">
-                <h2>Welcome to suve shop, the most innovative shop in the world</h2>
-                <p>Every tech you have ever imagined u find here</p>
-            </section>
+<div class="container">
+    <section class="hero">
+        <h2>Welcome to suve shop, the most innovative shop in the world</h2>
+        <p>Every tech you have ever imagined u find here</p>
+    </section>
 
-            <section class="products">
-                <h2>Our products</h2>
-                <div class="product">
-                    <img src="{% static 'suve_main/images/favicon.ico' %}" alt="Apple">
-                    <h3>Apple</h3>
-                    <p>Price: $3,5 T</p>
-                    <a href="{% url 'products_apple' %}"><button>Buy</button></a>
-                </div>
-                <div class="product">
-                    <img src="{% static 'suve_main/images/favicon-196x196.png' %}" alt="Tesla">
-                    <h3>Tesla</h3>
-                    <p>Price: $800,000 B</p>
-                     <a href="{% url 'products_tesla' %}"><button>Buy</button></a>
-                </div>
-                <div class="product">
-                    <img src="{% static 'suve_main/images/Favicon.png' %}" alt="Samsung">
-                    <h3>Samsung</h3>
-                    <p>Price: $400,000 B</p>
-                     <a href="{% url 'products_samsung' %}"><button>Buy</button></a>
-                </div>
-            </section>
+    <section class="products">
+        <h2>Our products</h2>
+        <div class="product">
+            <img src="{% static 'suve_main/images/favicon.ico' %}" alt="Apple">
+            <h3>Apple</h3>
+            <p>Price: $3,5 T</p>
+            <a href="{% url 'products_apple' %}"><button>Buy</button></a>
         </div>
-    </main>
+        <div class="product">
+            <img src="{% static 'suve_main/images/favicon-196x196.png' %}" alt="Tesla">
+            <h3>Tesla</h3>
+            <p>Price: $800,000 B</p>
+             <a href="{% url 'products_tesla' %}"><button>Buy</button></a>
+        </div>
+        <div class="product">
+            <img src="{% static 'suve_main/images/Favicon.png' %}" alt="Samsung">
+            <h3>Samsung</h3>
+            <p>Price: $400,000 B</p>
+             <a href="{% url 'products_samsung' %}"><button>Buy</button></a>
+        </div>
+    </section>
+</div>
+<form class="upload" action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Upload</button>
+</form>
 {% endblock %}

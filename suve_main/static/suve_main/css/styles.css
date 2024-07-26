@@ -1,31 +1,74 @@
-body {
+html, body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    height: 100%;
+}
+
+
+
+.card-container {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 1rem;
+    height: 100%;
+    padding: 1rem;
+    align-items: flex-start;
+}
+
+.card {
+    width: 18rem;
+    flex: 0 1 auto;
+    text-align: center;
+    margin-bottom: 1rem;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.d-flex{
+    position: absolute;
+    top: 15px;
+    right: 15px;
 }
 
 .container {
-    width: 60%;
+    width: 40%;
     margin: 0 auto;
+    position: relative;
+}
+
+.container a{
+    color: white;
+    text-decoration: none;
+}
+
+.products{
+    text-align: center;
+    width: 90%;
+}
+
+.navbar-brand{
+    position: absolute;
+    top: 5px;
+    left: 15px;
 }
 
 header {
     background: #333;
     color: #fff;
     padding: 10px 0;
+    display: flex;
 }
 
 header h1 {
     margin: 0;
-    padding: 0;
-    text-align: center;
-}
-
-nav ul {
-    list-style: none;
     padding: 0;
     text-align: center;
 }
@@ -44,11 +87,6 @@ nav ul li a {
     text-align: center;
     padding: 50px 0;
     background: #f5f5f5;
-}
-
-.products {
-    text-align: center;
-    padding: 166px 0;
 }
 
 .product {
@@ -96,6 +134,11 @@ footer {
     text-align: center;
     padding: 10px 0;
 }
+
+.content{
+    flex: 1;
+}
+
 
 footer p {
     margin: 0;

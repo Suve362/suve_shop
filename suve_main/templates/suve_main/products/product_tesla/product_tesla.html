@@ -7,16 +7,17 @@
 <head>
     <link type="text/css" href="{% static 'suve_main_tesla/css/style_tesla.css' %}" rel="stylesheet"/>
 </head>
+<div class="card-container">
 {% for product in product_data %}
-<div class="content">
-
-    <div id="tesla" class="product">
-        <img src="{% static 'suve_main_tesla/images/compositor.jpeg' %}" alt="Tesla">
-        <h3>{{ product.name }}</h3>
-        <p>{{ product.type }}</p>
-        <p>Price ${{ product.price }}</p>
-    </div>
-
+<div class="card" style="width: 18rem;">
+  <img src="{{ product.photo }}" class="card-img-top" alt="Tesla_car">
+  <div class="card-body">
+    <h5 class="card-title">{{ product.name }}</h5>
+    <p>{{ product.type }}</p>
+    <p>Price ${{ product.price }}</p>
+    <a href="{% url 'products_apple' %}" class="btn btn-primary">Buy</a>
+  </div>
 </div>
 {% endfor %}
+</div>
 {% endblock %}

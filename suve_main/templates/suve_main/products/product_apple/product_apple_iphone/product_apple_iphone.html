@@ -7,17 +7,20 @@
 <head>
     <link type="text/css" href="{% static 'suve_main_apple/css/style_apple.css' %}" rel="stylesheet"/>
 </head>
+<div class="card-container">
 {% for product in product_data %}
-<div class="content">
-
-    <div id="iphone" class="product">
-        <img src="{% static 'suve_main_apple/images/iphone-15-pro-finish-select-202309-6-7inch_GEO_US.webp' %}" alt="iPhone">
-        <h3>{{ product.name }}</h3>
-        <p>{{ product.diagonal }}"</p>
-        <p>{{ product.rom }} GB</p>
-        <p>Price ${{ product.price }}</p>
-    </div>
-
+<div class="card" style="width: 18rem;">
+  <img src="{{ product.photo }}" class="card-img-top" alt="Iphone">
+  <div class="card-body">
+    <h5 class="card-title">{{ product.name }}</h5>
+    <p>{{ product.diagonal }}"</p>
+    <p class="card-text">{{ product.rom }} GB</p>
+    <p class="card-text">{{ product.ram }} GB</p>
+    <p class="card-text">{{ product.cpu }}</p>
+    <p class="card-text">Price ${{ product.price }}</p>
+    <a href="{% url 'products_apple' %}" class="btn btn-primary">Buy</a>
+  </div>
 </div>
 {% endfor %}
+</div>
 {% endblock %}
