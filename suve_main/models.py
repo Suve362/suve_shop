@@ -6,6 +6,10 @@ class Routes(models.Model):
     url_name = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
 
+    class Meta:
+        ordering = ['id']
+        verbose_name_plural = "Routes"
+
     def __str__(self):
         return self.name
 
@@ -19,7 +23,9 @@ class Product(models.Model):
         return self.name
 
     class Meta:
-        ordering = ['-brand']
+        ordering = ['brand', 'category']
+        verbose_name = "Product"
+        verbose_name_plural = "Products"
 
     def get_absolute_url(self):
         return reverse('products_page', kwargs={'slug': self.brand})
@@ -28,6 +34,13 @@ class Product(models.Model):
 class ProductPhoto(models.Model):
     photo = models.ImageField(upload_to='photos/', default=None, blank=True, null=True, verbose_name='Photo')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True)
+
+    class Meta:
+        verbose_name = "Product Photo"
+        verbose_name_plural = "Product Photo"
+
+    def __str__(self):
+        return str(self.product)
 
 
 class StorageSpecs(models.Model):
@@ -38,6 +51,13 @@ class StorageSpecs(models.Model):
     diagonal = models.DecimalField(max_digits=10, decimal_places=1, blank=True, null=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
+    class Meta:
+        verbose_name = "Storage Spec"
+        verbose_name_plural = "Storage Specs"
+
+    def __str__(self):
+        return str(self.product)
+
 
 class WatchSpecs(models.Model):
     size = models.IntegerField()
@@ -45,11 +65,22 @@ class WatchSpecs(models.Model):
     connectivity = models.CharField(max_length=255, blank=True, null=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
+    class Meta:
+        verbose_name = "Watch Spec"
+        verbose_name_plural = "Watch Specs"
+
+    def __str__(self):
+        return str(self.product)
+
 
 class CarSpecs(models.Model):
     type = models.CharField(max_length=255)
     extra_options = models.BooleanField(blank=True, null=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = "Car Spec"
+        verbose_name_plural = "Car Specs"
 
     def __str__(self):
         return self.type
@@ -62,8 +93,12 @@ class ProductPrice(models.Model):
     car_spec = models.ForeignKey(CarSpecs, on_delete=models.CASCADE, blank=True, null=True)
     price = models.IntegerField()
 
+    class Meta:
+        verbose_name = "Product Price"
+        verbose_name_plural = "Product Prices"
+
     def __str__(self):
-        return str(self.price)
+        return str(self.product)
 
 
 

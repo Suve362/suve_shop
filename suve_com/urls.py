@@ -19,12 +19,17 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from suve_main.views import page_not_found
+from debug_toolbar.toolbar import debug_toolbar_urls
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('suve_main.urls'))
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + debug_toolbar_urls()
 
 handler404 = page_not_found
+
+admin.site.site_header = 'Welcome to Suve Shop admin'
+admin.site.index_title = 'shop.suve.com administration'
 
 
