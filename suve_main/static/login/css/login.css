@@ -1,0 +1,141 @@
+.login-modal__wrapper {
+    position: relative;
+    margin: 0 auto;
+    z-index: 50;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-row-align: center;
+    align-self: center;
+    -ms-grid-column-align: center;
+    justify-self: center;
+    width: 100%;
+    max-width: 360px;
+    padding: 40px 40px 20px;
+    background: #fff;
+    -webkit-transition: .2s;
+    transition: .2s;
+    -webkit-transform: translateY(50px);
+    transform: translateY(50px);
+}
+
+.login-modal__logo {
+    margin: 0 auto;
+}
+
+.button {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 100%;
+    border: none;
+    background-color: #362;
+    color: #fff;
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+
+
+.login-modal__form {
+    display: -ms-grid;
+    display: grid;
+}
+
+.login-modal__wrap {
+    margin-bottom: 16px;
+}
+
+.login-modal__forgot-link {
+    -ms-grid-column-align: start;
+    justify-self: start;
+    margin: -8px 0 20px;
+    color: #bcbcc6;
+    font-size: 16px;
+    line-height: 1.19;
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+
+.login-modal__login-submit {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px 20px 11px;
+    font-size: 16px;
+    line-height: 1.19;
+}
+.button--small {
+    height: 40px;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+.login-modal--opened .login-modal__wrapper {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+}
+
+.login-modal--opened {
+    visibility: visible;
+}
+
+body {
+    font-family: Exo2,arial,sans-serif;
+    font-size: 16px;
+    line-height: 1.2;
+    color: #000;
+    text-align: left;
+    cursor: default;
+}
+
+.field {
+    position: relative;
+    display: -ms-grid;
+    display: grid;
+    padding-top: 14px;
+}
+
+.field__input {
+    width: 100%;
+    padding: 5px 0 5px;
+    border: none;
+    border-bottom-width: medium;
+    border-bottom-style: none;
+    border-bottom-color: currentcolor;
+    border-bottom: 1px solid #e0e1e8;
+    color: #000;
+    font-size: 16px;
+    font-family: Exo2,arial,sans-serif;
+    line-height: 1.2;
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+
+.field__label {
+    position: relative;
+    top: 25px;
+    left: 0;
+    color: #777780;
+    font-size: 16px;
+    line-height: 1.13;
+    pointer-events: none;
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+
+.field__input:focus {
+    outline: 2px solid #362;
+}
+
+.form-error {
+    margin: 0;
+    padding: 0;
+    color: #362;
+}
+
+
+

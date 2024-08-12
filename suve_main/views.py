@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseNotFound
 
-from .forms import ProductForm
+from .forms import LoginForm
+# from .forms import ProductForm
 from .models import *
 
 
@@ -13,17 +14,8 @@ from .models import *
 
 def main_page(request):
     urls = Routes.objects.filter(pk__in=[1, 2, 3, 4])
-    if request.method == 'POST':
-        form = ProductForm(request.POST, request.FILES)
-        if form.is_valid():
-            fp = ProductPhoto(photo=form.cleaned_data['photo'])
-            fp.save()
-            return redirect('main')
-    else:
-        form = ProductForm()
     data = {
         'routes': urls,
-        'form': form
     }
     return render(request, 'suve_main/main/main.html', context=data)
 
@@ -40,8 +32,16 @@ def main(request):
 
 def login(request):
     urls = Routes.objects.filter(pk__in=[1, 2, 3, 4])
+    if request.method == 'POST':
+        form = LoginForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('main')
+    else:
+        form = LoginForm()
     data = {
-        'routes': urls
+        'routes': urls,
+        'form': form,
     }
     return render(request, 'suve_main/login/login.html', context=data)
 
@@ -91,6 +91,7 @@ def products_apple(request):
                 'rom': storage_spec.rom,
                 'ram': storage_spec.ram,
                 'cpu': storage_spec.cpu,
+                'gpu': storage_spec.gpu,
                 'diagonal': storage_spec.diagonal,
                 'price': price.price,
                 'photo': products_photo.photo.url
@@ -122,6 +123,7 @@ def products_apple_iphone(request):
                 'rom': storage_spec.rom,
                 'ram': storage_spec.ram,
                 'cpu': storage_spec.cpu,
+                'gpu': storage_spec.gpu,
                 'diagonal': storage_spec.diagonal,
                 'price': price.price,
                 'photo': products_photo.photo.url
@@ -153,6 +155,7 @@ def products_apple_ipad(request):
                 'rom': storage_spec.rom,
                 'ram': storage_spec.ram,
                 'cpu': storage_spec.cpu,
+                'gpu': storage_spec.gpu,
                 'diagonal': storage_spec.diagonal,
                 'price': price.price,
                 'photo': products_photo.photo.url
@@ -184,6 +187,7 @@ def products_apple_macbook(request):
                 'rom': storage_spec.rom,
                 'ram': storage_spec.ram,
                 'cpu': storage_spec.cpu,
+                'gpu': storage_spec.gpu,
                 'diagonal': storage_spec.diagonal,
                 'price': price.price,
                 'photo': products_photo.photo.url
@@ -215,6 +219,7 @@ def products_apple_mac(request):
                 'rom': storage_spec.rom,
                 'ram': storage_spec.ram,
                 'cpu': storage_spec.cpu,
+                'gpu': storage_spec.gpu,
                 'diagonal': storage_spec.diagonal,
                 'price': price.price,
                 'photo': products_photo.photo.url
@@ -304,6 +309,7 @@ def products_samsung(request):
                 'rom': storage_spec.rom,
                 'ram': storage_spec.ram,
                 'cpu': storage_spec.cpu,
+                'gpu': storage_spec.gpu,
                 'diagonal': storage_spec.diagonal,
                 'price': price.price,
                 'photo': products_photo.photo.url
@@ -335,6 +341,7 @@ def products_samsung_smartphones(request):
                 'rom': storage_spec.rom,
                 'ram': storage_spec.ram,
                 'cpu': storage_spec.cpu,
+                'gpu': storage_spec.gpu,
                 'diagonal': storage_spec.diagonal,
                 'price': price.price,
                 'photo': products_photo.photo.url
@@ -368,6 +375,7 @@ def products_samsung_tab(request):
                 'rom': storage_spec.rom,
                 'ram': storage_spec.ram,
                 'cpu': storage_spec.cpu,
+                'gpu': storage_spec.gpu,
                 'diagonal': storage_spec.diagonal,
                 'price': price.price,
                 'photo': products_photo.photo.url
@@ -401,6 +409,7 @@ def products_samsung_galaxybook(request):
                 'rom': storage_spec.rom,
                 'ram': storage_spec.ram,
                 'cpu': storage_spec.cpu,
+                'gpu': storage_spec.gpu,
                 'diagonal': storage_spec.diagonal,
                 'price': price.price,
                 'photo': products_photo.photo.url

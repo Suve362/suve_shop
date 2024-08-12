@@ -1,4 +1,26 @@
 {% extends 'index.html' %}
 {% block content %}
-<h1>Log</h1>
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'login/css/login.css' %}">
+    <script src="{% static 'login/js/login.js' %}"></script>
+</head>
+<div class="login-modal__wrapper"><a class="login-modal__logo" href="#"><img src="{% static 'suve_main/images/photo_2024-07-24_07-35-57.jpg' %}" width="50" alt="Suve Logo"></a>
+    <p class="login-modal__title">Вход</p>
+    <form class="login-modal__form login-modal__form--singin" action="" method="post">
+        <div class="login-modal__wrap field">
+            {% csrf_token %}
+            <div class="form-error">{{ form.non_field_errors }}</div>
+            {% for f in form %}
+            <p><label class="field__label" for="{{ f.id_for_label }}">{{ f.label }}</label>{{ f }}</p>
+            <div class="form-error">{{ f.errors }}</div>
+            {% endfor %}
+        </div>
+        <a class="login-modal__forgot-link login-modal-recovery" href="#">Забыли пароль?</a>
+        <button class="button button--small login-modal__login-submit" type="submit">Войти</button>
+    </form>
+        <a href="/" target="_blank">
+            <button class="button button--small login-modal__login-submit" type="submit">Зарегистрироваться</button>
+        </a>
+</div>
 {% endblock %}

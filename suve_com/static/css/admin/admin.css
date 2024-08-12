@@ -1,0 +1,18 @@
+#site-name a {
+    color: #ffc !important;
+}
+
+#header, .module caption, #changelist-filter h2, input[type="submit"].default {
+    background: #362;
+}
+
+:root {
+      --link-fg: #372;
+      --link-hover-color: #392;
+      --link-selected-fg: #392;
+      --border-color: #372;
+      --breadcrumbs-bg: #000000;
+      --header-link-color: 362;
+    }
+
+

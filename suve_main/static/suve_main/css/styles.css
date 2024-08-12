@@ -6,9 +6,8 @@ html, body {
     display: flex;
     flex-direction: column;
     height: 100%;
+    background-color: #332 !important;
 }
-
-
 
 .card-container {
     display: flex;
@@ -32,26 +31,33 @@ html, body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.d-flex{
+#login {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    right: 25px;
 }
 
 .container {
     width: 40%;
     margin: 0 auto;
     position: relative;
+    text-align: center;
 }
 
 .container a{
     color: white;
     text-decoration: none;
+    display: inline-block;
 }
 
 .products{
     text-align: center;
     width: 90%;
+    color: #fff;
+    margin: 0 auto;
+}
+
+.products h3{
+    color: #000;
 }
 
 .navbar-brand{
@@ -61,7 +67,7 @@ html, body {
 }
 
 header {
-    background: #333;
+    background: #332;
     color: #fff;
     padding: 10px 0;
     display: flex;
@@ -86,7 +92,8 @@ nav ul li a {
 .hero {
     text-align: center;
     padding: 50px 0;
-    background: #f5f5f5;
+    background: #362;
+    color: #fff;
 }
 
 .product {
@@ -97,6 +104,7 @@ nav ul li a {
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: #fff;
 }
 
 .product img {
@@ -137,9 +145,20 @@ footer {
 
 .content{
     flex: 1;
+    color: #fff;
 }
-
 
 footer p {
     margin: 0;
 }
+
+.upload {
+    color: #fff;
+}
+
+.d-flex {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
