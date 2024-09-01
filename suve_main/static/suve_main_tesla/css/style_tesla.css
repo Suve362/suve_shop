@@ -44,3 +44,14 @@ body {
 .product h3 {
     margin: 10px 0;
 }
+
+.btn-primary {
+  --bs-btn-bg: #362;
+  --bs-btn-border-color: #372;
+  --bs-btn-hover-bg: #372;
+}
+
+.pagination {
+  --bs-pagination-active-bg: #362;
+  --bs-pagination-active-border-color: #372;
+}
