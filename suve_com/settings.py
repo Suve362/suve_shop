@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'suve_main.apps.SuveMainConfig',
+    'suve_auth.apps.SuveAuthConfig',
     'debug_toolbar',
 ]
 
@@ -72,6 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'suve_com.context_processors.get_menu_context',
             ],
         },
     },
@@ -113,6 +115,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = ['suve_auth.authentication.EmailBackend', 'django.contrib.auth.backends.ModelBackend']
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
@@ -141,3 +145,9 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = 'main'
+LOGOUT_REDIRECT_URL = 'main'
+
+
+

@@ -31,9 +31,18 @@
             <a class="nav-link active" aria-current="page" href="{% url url.url_name %}">{{ url.name }}</a>
             </li>
             {% endfor %}
+            {% if user.is_authenticated %}
             <li class="nav-item">
-            <a class="nav-link active" id="login" aria-current="page" href="{% url 'login' %}">Log in</a>
+                <form method="post" action="{% url 'auth:logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn nav-link active" id="logout">{{ user.username }} | Log out</button>
+                </form>
             </li>
+            {% else %}
+            <li class="nav-item">
+            <a class="nav-link active" id="login" aria-current="page" href="{% url 'auth:login' %}">Log in</a>
+            </li>
+            {% endif %}
         </ul>
         </div>
     </nav>

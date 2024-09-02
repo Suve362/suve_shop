@@ -33,7 +33,12 @@ html, body {
 
 #login {
     position: absolute;
-    right: 25px;
+    right: 10px;
+}
+
+#logout {
+    position: absolute;
+    right: 10px;
 }
 
 .container {

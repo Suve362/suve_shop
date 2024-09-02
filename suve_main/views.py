@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseNotFound
 from django.views import View
 from django.views.generic import TemplateView, CreateView, ListView
 
-from .forms import LoginForm
+# from .forms import LoginForm
 # from .forms import ProductForm
 from .models import *
 from .utils import ProductMixin
@@ -17,9 +17,9 @@ from .utils import ProductMixin
 
 class MainPage(TemplateView):
     template_name = 'suve_main/main/main.html'
-    extra_context = {
-        'routes': Routes.objects.filter(pk__in=[1, 2, 3, 4]),
-    }
+    # extra_context = {
+    #     'routes': Routes.objects.filter(pk__in=[1, 2, 3, 4]),
+    # }
 
 
 # def pages(request, page_id):
@@ -32,45 +32,45 @@ def main(request):
     return redirect('main')
 
 
-class Login(CreateView):
-    form_class = LoginForm
-    template_name = 'suve_main/login/login.html'
-    urls = Routes.objects.filter(pk__in=[1, 2, 3, 4])
-    extra_context = {
-        'routes': urls,
-    }
-    # if request.method == 'POST':
-    #     form = LoginForm(request.POST, request.FILES)
-    #     if form.is_valid():
-
-    def form_valid(self, form):
-        form.save()
-        return redirect('main')
+# class Login(CreateView):
+#     form_class = LoginForm
+#     template_name = 'suve_main/login/login.html'
+#     urls = Routes.objects.filter(pk__in=[1, 2, 3, 4])
+#     extra_context = {
+#         'routes': urls,
+#     }
+#     # if request.method == 'POST':
+#     #     form = LoginForm(request.POST, request.FILES)
+#     #     if form.is_valid():
+#
+#     def form_valid(self, form):
+#         form.save()
+#         return redirect('main')
 
 
 class ContactsPage(TemplateView):
     template_name = 'suve_main/contacts/contacts.html'
-    urls = Routes.objects.filter(pk__in=[1, 2, 3, 4])
-    extra_context = {
-        'routes': urls
-    }
+    # urls = Routes.objects.filter(pk__in=[1, 2, 3, 4])
+    # extra_context = {
+    #     'routes': urls
+    # }
 
 
 class CartPage(TemplateView):
     template_name = 'suve_main/cart/cart.html'
-    urls = Routes.objects.filter(pk__in=[1, 2, 3, 4])
-    extra_context = {
-        'routes': urls
-    }
+    # urls = Routes.objects.filter(pk__in=[1, 2, 3, 4])
+    # extra_context = {
+    #     'routes': urls
+    # }
 
 
 class ProductsPage(ListView):
     model = Product
     template_name = 'suve_main/products/products.html'
-    urls = Routes.objects.filter(pk__in=[1, 2, 3, 4])
-    extra_context = {
-        'routes': urls,
-    }
+    # urls = Routes.objects.filter(pk__in=[1, 2, 3, 4])
+    # extra_context = {
+    #     'routes': urls,
+    # }
 
     def get_queryset(self):
         pass
@@ -570,10 +570,10 @@ class ProductsTesla(ProductMixin, ListView):
 
         return product_data
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['routes'] = Routes.objects.filter(pk__in=[1, 2, 3, 4])
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['routes'] = Routes.objects.filter(pk__in=[1, 2, 3, 4])
+    #     return context
 
 
 def page_not_found(request, exception):

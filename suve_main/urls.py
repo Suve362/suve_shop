@@ -22,7 +22,7 @@ urlpatterns = [
     path('products/tesla/', views.ProductsTesla.as_view(), name='products_tesla'),
     path('contacts/', views.ContactsPage.as_view(), name='contacts'),
     path('cart/', views.CartPage.as_view(), name='cart'),
-    path('login/', views.Login.as_view(), name='login'),
+    # path('login/', views.Login.as_view(), name='login'),
 ]
 
 
