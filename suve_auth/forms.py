@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model, authenticate
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm
 from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator
 from django.utils.deconstruct import deconstructible
@@ -35,22 +35,22 @@ class LoginForm(AuthenticationForm):
         ],
     )
 
-    def clean(self):
-        email = self.cleaned_data.get('username')
-        password = self.cleaned_data.get('password')
-
-        if email and password:
-            self.user_cache = authenticate(email=email, password=password)
-            if self.user_cache is None:
-                raise ValidationError(
-                    "Please enter a correct email and password. Note that both fields may be case-sensitive.")
-            elif not self.user_cache.is_active:
-                raise ValidationError("This account is inactive.")
-
-        return self.cleaned_data
-
-    def get_user(self):
-        return self.user_cache
+    # def clean(self):
+    #     email = self.cleaned_data.get('username')
+    #     password = self.cleaned_data.get('password')
+    #
+    #     if email and password:
+    #         self.user_cache = authenticate(email=email, password=password)
+    #         if self.user_cache is None:
+    #             raise ValidationError(
+    #                 "Please enter a correct email and password.")
+    #         elif not self.user_cache.is_active:
+    #             raise ValidationError("This account is inactive.")
+    #
+    #     return self.cleaned_data
+    #
+    # def get_user(self):
+    #     return self.user_cache
 
     def clean_username(self):
         email = self.cleaned_data.get('username')
@@ -62,7 +62,7 @@ class LoginForm(AuthenticationForm):
     class Meta:
 
         model = get_user_model()
-        fields = ['email', 'password']
+        fields = ['username', 'password']
         # widgets = {
         #         }
         # labels = {'username': 'Email',
@@ -72,19 +72,64 @@ class LoginForm(AuthenticationForm):
 class RegisterForm(UserCreationForm):
     username = forms.CharField(label='Username', widget=forms.TextInput(attrs={'class': 'field__input'}))
     email = forms.CharField(label='E-mail', widget=forms.TextInput(attrs={'class': 'field__input'}))
-    password1 = forms.CharField(label='Password', widget=(forms.PasswordInput(attrs={'class': 'field__input'})))
-    password2 = forms.CharField(label='Confirm password', widget=(forms.PasswordInput(attrs={'class': 'field__input'})))
+    password1 = forms.CharField(label='Password',
+                                widget=(forms.PasswordInput(attrs={'class': 'field__input'})),
+                                validators=[PasswordValidator()]
+                                )
+    password2 = forms.CharField(label='Confirm password',
+                                widget=(forms.PasswordInput(attrs={'class': 'field__input'})),
+                                validators=[PasswordValidator()]
+                                )
 
     class Meta:
         model = get_user_model()
         fields = ['username', 'email', 'password1', 'password2']
-        # labels = {
-        # }
-        # widget = {
-        # }
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
         if get_user_model().objects.filter(email=email):
             raise ValidationError('That username is taken. Try another.')
         return email
+
+
+class ProfileForm(forms.ModelForm):
+
+    email = forms.CharField(disabled=True,
+                            label='E-mail',
+                            widget=(forms.TextInput(attrs={'class': 'field__input'})
+                                    ))
+    username = forms.CharField(disabled=True,
+                               label='Username',
+                               widget=(forms.TextInput(attrs={'class': 'field__input'})
+                                       ))
+    first_name = forms.CharField(widget=(forms.TextInput(attrs={'class': 'field__input'})
+                                         ))
+    last_name = forms.CharField(widget=(forms.TextInput(attrs={'class': 'field__input'})
+                                        ))
+
+    class Meta:
+
+        model = get_user_model()
+        fields = ['email', 'username', 'first_name', 'last_name']
+        labels = {
+            'first_name': 'First Name',
+            'last_name': 'Last Name',
+        }
+
+
+class UserPasswordChangeForm(PasswordChangeForm):
+
+    old_password = forms.CharField(label='Old password',
+                                   widget=(forms.PasswordInput(attrs={'class': 'field__input'})),
+                                   validators=[PasswordValidator()]
+                                   )
+    new_password1 = forms.CharField(label='New password',
+                                    widget=(forms.PasswordInput(attrs={'class': 'field__input'})),
+                                    validators=[PasswordValidator()]
+                                    )
+    new_password2 = forms.CharField(label='Confirm new password',
+                                    widget=(forms.PasswordInput(attrs={'class': 'field__input'})),
+                                    validators=[PasswordValidator()]
+                                    )
+
+

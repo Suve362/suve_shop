@@ -1,12 +1,13 @@
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, TemplateView, UpdateView
 
-from suve_auth.forms import LoginForm, RegisterForm
+from suve_auth.forms import LoginForm, RegisterForm, ProfileForm, UserPasswordChangeForm
 from suve_main.models import Routes
 
 
@@ -45,8 +46,28 @@ class RegisterUser(CreateView):
     success_url = reverse_lazy('auth:register_done')
 
 
-def register_done(request):
-    return render(request, '/opt/python_projects/suve_shop/suve_auth/templates/register_done.html')
+class RegisterDone(TemplateView):
+    template_name = 'register_done.html'
+
+
+class ProfileUser(LoginRequiredMixin, UpdateView):
+
+    model = get_user_model()
+    form_class = ProfileForm
+    template_name = 'profile.html'
+
+    def get_success_url(self):
+        return reverse_lazy('auth:profile')
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+
+class PasswordChange(PasswordChangeView):
+    model = get_user_model()
+    form_class = UserPasswordChangeForm
+    template_name = 'password_change.html'
+    success_url = reverse_lazy('auth:password_change_done')
 
 
 

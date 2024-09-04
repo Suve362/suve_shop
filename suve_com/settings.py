@@ -115,7 +115,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTHENTICATION_BACKENDS = ['suve_auth.authentication.EmailBackend', 'django.contrib.auth.backends.ModelBackend']
+AUTHENTICATION_BACKENDS = ['suve_auth.authentication.EmailAuthBackend',
+                           'django.contrib.auth.backends.ModelBackend'
+                           ]
 
 
 # Internationalization
