@@ -1,0 +1,47 @@
+{% extends 'index.html' %}
+{% block content %}
+<style>
+    body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 {
+            color: #4CAF50;
+            font-size: 24px;
+        }
+        p {
+            font-size: 18px;
+            margin: 15px 0;
+        }
+        .footer {
+            font-size: 14px;
+            color: #777;
+            margin-top: 20px;
+        }
+</style>
+<body>
+    <h1>Congratulations on Joining Suve!</h1>
+    <p>Dear User,</p>
+    <p>We are thrilled to welcome you to our community. Thank you for registering on our platform. We are committed to providing you with the best experience possible, and we can't wait for you to explore all the innovative features we have to offer.</p>
+    <p>If you have any questions or need assistance, feel free to reach out to our support team. We're here to help!</p>
+    <p>Enjoy your journey with us!</p>
+    <h3><a href="{% url 'auth:login' %}">Log in</a></h3>
+</body>
+
+{% endblock%}

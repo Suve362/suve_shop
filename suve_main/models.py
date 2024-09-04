@@ -14,20 +14,6 @@ class Routes(models.Model):
         return self.name
 
 
-class Login(models.Model):
-    email = models.CharField(max_length=255, verbose_name='Email')
-    password = models.CharField(max_length=255, verbose_name='Password')
-    date = models.DateTimeField(auto_now_add=True, verbose_name='Time')
-
-    def __str__(self):
-        return self.email
-
-    class Meta:
-        ordering = ['date']
-        verbose_name = "Login"
-        verbose_name_plural = "Login"
-
-
 class Product(models.Model):
     name = models.CharField(max_length=255, verbose_name='PRODUCT NAME')
     brand = models.CharField(max_length=255, verbose_name='BRAND')

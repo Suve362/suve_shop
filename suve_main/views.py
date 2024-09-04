@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseNotFound
 from django.views import View
@@ -76,7 +77,7 @@ class ProductsPage(ListView):
         pass
 
 
-class ProductsApple(ProductMixin, ListView):
+class ProductsApple(LoginRequiredMixin, ProductMixin, ListView):
     template_name = 'suve_main/products/product_apple/product_apple.html'
     context_object_name = 'product_data'
 
@@ -325,7 +326,7 @@ class ProductsAppleAirpods(ProductMixin, ListView):
         return context
 
 
-class ProductsSamsung(ProductMixin, ListView):
+class ProductsSamsung(LoginRequiredMixin, ProductMixin, ListView):
 
     template_name = 'suve_main/products/product_samsung/product_samsung.html'
     context_object_name = 'product_data'
@@ -543,7 +544,7 @@ class ProductsSamsungGalaxybuds(ProductMixin, ListView):
         return context
 
 
-class ProductsTesla(ProductMixin, ListView):
+class ProductsTesla(LoginRequiredMixin, ProductMixin, ListView):
     template_name = 'suve_main/products/product_tesla/product_tesla.html'
     context_object_name = 'product_data'
 

@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model, authenticate
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator
 from django.utils.deconstruct import deconstructible
@@ -24,7 +24,7 @@ class LoginForm(AuthenticationForm):
     username = forms.EmailField(
         max_length=255,
         widget=forms.TextInput(attrs={'class': 'field__input'}),
-        label="Email",
+        label="E-mail",
         error_messages={'invalid': 'Enter a valid email address.'}
     )
     password = forms.CharField(
@@ -67,3 +67,24 @@ class LoginForm(AuthenticationForm):
         #         }
         # labels = {'username': 'Email',
         #           'password': 'Password'}
+
+
+class RegisterForm(UserCreationForm):
+    username = forms.CharField(label='Username', widget=forms.TextInput(attrs={'class': 'field__input'}))
+    email = forms.CharField(label='E-mail', widget=forms.TextInput(attrs={'class': 'field__input'}))
+    password1 = forms.CharField(label='Password', widget=(forms.PasswordInput(attrs={'class': 'field__input'})))
+    password2 = forms.CharField(label='Confirm password', widget=(forms.PasswordInput(attrs={'class': 'field__input'})))
+
+    class Meta:
+        model = get_user_model()
+        fields = ['username', 'email', 'password1', 'password2']
+        # labels = {
+        # }
+        # widget = {
+        # }
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if get_user_model().objects.filter(email=email):
+            raise ValidationError('That username is taken. Try another.')
+        return email

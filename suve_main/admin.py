@@ -88,11 +88,4 @@ class RoutesAdmin(admin.ModelAdmin):
     search_fields = ('name',)
 
 
-@admin.register(Login)
-class LoginAdmin(admin.ModelAdmin):
-    list_display = ('id', 'email', 'password', 'date')
-    list_per_page = 50
-    search_fields = ('email',)
-
-
 

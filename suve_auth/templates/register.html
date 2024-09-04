@@ -16,11 +16,7 @@
             <div class="form-error">{{ f.errors }}</div>
             {% endfor %}
         </div>
-        <a class="login-modal__forgot-link login-modal-recovery" href="#">Forgot password?</a>
-        <button class="button button--small login-modal__login-submit" type="submit">Log In</button>
+        <button class="button button--small login-modal__login-submit" type="submit">Зарегистрироваться</button>
     </form>
-        <a href="{% url 'auth:signup' %}">
-            <button class="button button--small login-modal__login-submit" type="submit">Sign Up</button>
-        </a>
 </div>
 {% endblock %}
