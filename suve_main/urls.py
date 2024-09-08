@@ -4,6 +4,7 @@ from rest_framework import routers
 
 from .views import SuveMainSetView
 
+
 router = routers.DefaultRouter()
 router.register(r'products', SuveMainSetView, basename='products')
 
