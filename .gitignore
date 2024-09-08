@@ -1,1 +1,9 @@
 .env
+*.pyc
+__pycache__/
+.pytest_cache/
+*.pyo
+venv/
+suve.db
+data.json
+media/
