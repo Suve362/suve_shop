@@ -1,9 +1,7 @@
 .env
 *.pyc
-__pycache__/
-.pytest_cache/
-*.pyo
-venv/
+**/__pycache__/
+venv
 suve.db
 data.json
 media/
