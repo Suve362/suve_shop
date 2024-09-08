@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model, authenticate
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm, PasswordResetForm
 from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator
 from django.utils.deconstruct import deconstructible
@@ -88,7 +88,7 @@ class RegisterForm(UserCreationForm):
     def clean_email(self):
         email = self.cleaned_data.get('email')
         if get_user_model().objects.filter(email=email):
-            raise ValidationError('That username is taken. Try another.')
+            raise ValidationError('That email is taken. Try another.')
         return email
 
 
@@ -131,5 +131,15 @@ class UserPasswordChangeForm(PasswordChangeForm):
                                     widget=(forms.PasswordInput(attrs={'class': 'field__input'})),
                                     validators=[PasswordValidator()]
                                     )
+
+
+class UserPasswordReset(PasswordResetForm):
+    email = forms.CharField(label='E-mail', widget=(forms.TextInput(attrs={'class': 'field__input'})))
+
+    class Meta:
+
+        model = get_user_model()
+        fields = ['email',]
+
 
 

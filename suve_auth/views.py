@@ -1,13 +1,13 @@
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
+from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordResetView
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, TemplateView, UpdateView
 
-from suve_auth.forms import LoginForm, RegisterForm, ProfileForm, UserPasswordChangeForm
+from suve_auth.forms import LoginForm, RegisterForm, ProfileForm, UserPasswordChangeForm, UserPasswordReset
 from suve_main.models import Routes
 
 
@@ -64,10 +64,20 @@ class ProfileUser(LoginRequiredMixin, UpdateView):
 
 
 class PasswordChange(PasswordChangeView):
+
     model = get_user_model()
     form_class = UserPasswordChangeForm
     template_name = 'password_change.html'
     success_url = reverse_lazy('auth:password_change_done')
+
+
+class UserPasswordResetView(PasswordResetView):
+
+    model = get_user_model()
+    template_name = 'password_reset.html'
+    email_template_name = 'password_reset_email.html'
+    form_class = UserPasswordReset
+    success_url = reverse_lazy('auth:password_reset_done')
 
 
 

@@ -1,5 +1,11 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
+from rest_framework import routers
+
+from .views import SuveMainSetView
+
+router = routers.DefaultRouter()
+router.register(r'products', SuveMainSetView, basename='products')
 
 urlpatterns = [
     path('', views.MainPage.as_view(), name='main'),
@@ -22,7 +28,7 @@ urlpatterns = [
     path('products/tesla/', views.ProductsTesla.as_view(), name='products_tesla'),
     path('contacts/', views.ContactsPage.as_view(), name='contacts'),
     path('cart/', views.CartPage.as_view(), name='cart'),
-    # path('login/', views.Login.as_view(), name='login'),
+    path('api/', include(router.urls)),
 ]
 
 

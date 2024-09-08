@@ -25,7 +25,8 @@ from debug_toolbar.toolbar import debug_toolbar_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('suve_main.urls')),
-    path('auth/', include('suve_auth.urls', namespace='auth'))
+    path('auth/', include('suve_auth.urls', namespace='auth')),
+    path('api/auth/', include('rest_framework.urls')),
 ] + debug_toolbar_urls()
 
 if settings.DEBUG:

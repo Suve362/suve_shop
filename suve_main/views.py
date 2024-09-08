@@ -7,7 +7,10 @@ from django.views.generic import TemplateView, CreateView, ListView
 # from .forms import LoginForm
 # from .forms import ProductForm
 from .models import *
+from .serializers import SuveMainSerializer
 from .utils import ProductMixin
+
+from rest_framework import generics, viewsets, permissions
 
 
 # def handle_uploaded_file(f):
@@ -579,3 +582,10 @@ class ProductsTesla(LoginRequiredMixin, ProductMixin, ListView):
 
 def page_not_found(request, exception):
     return HttpResponseNotFound('try again')
+
+
+class SuveMainSetView(viewsets.ModelViewSet):
+
+    queryset = ProductPrice.objects.all()
+    serializer_class = SuveMainSerializer
+    permission_classes = [permissions.IsAdminUser]
