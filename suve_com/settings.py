@@ -23,6 +23,7 @@ INTERNAL_IPS = [
 
 
 INSTALLED_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -32,7 +33,9 @@ INSTALLED_APPS = [
     'django_extensions',
     'suve_main.apps.SuveMainConfig',
     'suve_auth.apps.SuveAuthConfig',
+    'ws_app.apps.WsAppConfig',
     'debug_toolbar',
+    'channels',
     'rest_framework',
 ]
 
@@ -68,7 +71,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'suve_com.wsgi.application'
+# WSGI_APPLICATION = 'suve_com.wsgi.application'
+ASGI_APPLICATION = 'suve_com.asgi.application'
 
 # подключение postgresql
 DATABASES = {

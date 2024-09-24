@@ -4,4 +4,5 @@
 venv
 suve.db
 data.json
-media/
+media
+.idea

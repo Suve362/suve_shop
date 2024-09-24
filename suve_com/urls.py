@@ -26,6 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('suve_main.urls')),
     path('auth/', include('suve_auth.urls', namespace='auth')),
+    path('ws/', include('ws_app.urls', namespace='ws_app')),
     path('api/auth/', include('rest_framework.urls')),
 ] + debug_toolbar_urls()
 
