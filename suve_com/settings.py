@@ -142,6 +142,8 @@ MEDIA_URL = '/media/'
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 5000
+
 
 LOGIN_REDIRECT_URL = 'main' # настройка redirect после login
 LOGOUT_REDIRECT_URL = 'main' # настройка redirect после logout
